@@ -47,8 +47,12 @@ Now lets look at xGherkin.net syntax
 
 ```csharp
 using Moq;
+using Ploeh.AutoFixture;
+using Ploeh.AutoFixture.AutoMoq;
 using System.Linq;
+using xGherkin;
 using Xunit.Should;
+
 
 namespace xGherkinTests
 {

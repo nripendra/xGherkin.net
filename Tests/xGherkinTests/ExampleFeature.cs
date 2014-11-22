@@ -1,9 +1,8 @@
-﻿using Xunit;
-using xGherkin;
+﻿using Moq;
 using Ploeh.AutoFixture;
 using Ploeh.AutoFixture.AutoMoq;
-using Moq;
 using System.Linq;
+using xGherkin;
 using Xunit.Should;
 
 namespace xGherkinTests
