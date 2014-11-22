@@ -1,51 +1,7 @@
-xGherkin.net
-============
-
-xGherkin.net is a xspec flavored BDD framework written in c#, that tries to mimic Gherkin syntax as closely as possible.
-
-It is implemented as an extension to xunit.net
-
-Let's look at an typical example of a feature explained in Gherkin syntax.
-
-```gherkin
-    @Issue-345
-    Feature: Password management
-
-        An authenticated user must be able to change password, by providing new and old password. 
-        If user isn't authenticated yet, then providing email (that user had registered with), 
-        s/he shoudld be able to reset password. Resetting password will cause an email to be sent to 
-        the user with a new system generated password.
-
-    Background:
-        Given that following users exist
-            |username |password|
-            -------------------
-            |bob@123  |pass1   |
-            |sam@123  |pass2   |
-
-    @PBI-32160 @Bug-42150 @Sprint-1
-    Senario: Successfull password change
-        Given that I have logged in with 'bob@123'
-            And I have set oldpassword to 'pass1' and new password to 'pass2'
-        When I call reset password
-        Then it should be successful
-            And calling GetByCredentials with username: 'bob@123' and with password: 'pass1' should return null
-            And calling GetByCredentials with username: 'bob@123' and password: 'pass2' 
-                should return a user with username 'bob@123'
-
-    @PBI-32160 @Bug-42150 @Sprint-1
-    Senario: Unsuccessfull password change, due to wrong old password
-        Given that I have logged in with 'bob@123'
-            And I have set oldpassword to 'abc' and new password to 'pass2'
-        When I call reset password
-        Then it should not succeed
-            And calling GetByCredentials with username: 'bob@123' and password: 'abc' should return null
-            And calling GetByCredentials with username: 'bob@123' and password: 'pass1' should user
-```
-
-Now lets look at xGherkin.net syntax
-
-```csharp
+﻿using Xunit;
+using xGherkin;
+using Ploeh.AutoFixture;
+using Ploeh.AutoFixture.AutoMoq;
 using Moq;
 using System.Linq;
 using Xunit.Should;
@@ -53,7 +9,7 @@ using Xunit.Should;
 namespace xGherkinTests
 {
     [Issue("345"),
-    Feature("Password management",
+     Feature("Password management",
                @"An authenticated user must be able to change password, by providing new and old password. 
                  If user isn't authenticated yet, then providing email (that user had registered with), 
                  s/he shoudld be able to reset password. Resetting password will cause an email to be sent to 
@@ -187,31 +143,5 @@ namespace xGherkinTests
             _userService = serviceMock.Object;
         }
     }
+
 }
-```
-
-Notice how similar xGherkin.net syntax is to plain Gherkin. Just remove the c# noise and what remains will be pure Gherkin.
-
-There is support for much of Gherkin syntax such as:
-
-* Feature with description
-* Senario with Given-When-Then steps
-* Senario outline, that can parameterize the Senario steps
-* Example table
-* Fixture table in given step is also supported.
-* Background
-* Tags
-
-xGherkin.net also support some built in scrum tags such as:
-
-* PBI
-* Task
-* Sprint
-* Bug
-
-Also there is an 'Issue' tag to represent Github issue.
-
-License
-============
-
-This library has been released under the term of very open MIT license, so feel free to extend or modify it any way you like.
