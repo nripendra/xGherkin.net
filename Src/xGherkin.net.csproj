@@ -46,9 +46,9 @@
     <Compile Include="Examples.cs" />
     <Compile Include="FeatureAttribute.cs" />
     <Compile Include="GherkinTable.cs" />
-    <Compile Include="SenarioAttribute.cs" />
-    <Compile Include="Core\SenarioContext.cs" />
-    <Compile Include="SenarioOutlineAttribute.cs" />
+    <Compile Include="ScenarioAttribute.cs" />
+    <Compile Include="Core\ScenarioContext.cs" />
+    <Compile Include="ScenarioOutlineAttribute.cs" />
     <Compile Include="Core\Steps\GherkinStep.cs" />
     <Compile Include="Core\Steps\GivenStep.cs" />
     <Compile Include="Core\Steps\ThenStep.cs" />

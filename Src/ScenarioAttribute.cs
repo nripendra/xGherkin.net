@@ -7,7 +7,7 @@ using Xunit.Sdk;
 
 namespace xGherkin
 {
-    public class SenarioAttribute : FactAttribute
+    public class ScenarioAttribute : FactAttribute
     {
         public string Title
         {
@@ -15,18 +15,18 @@ namespace xGherkin
             set { DisplayName = value; }
         }
 
-        public SenarioAttribute(string title)
+        public ScenarioAttribute(string title)
         {
             Title = title;
         }
 
-        private SenarioAttribute()
+        private ScenarioAttribute()
         {
         }
 
         protected override IEnumerable<ITestCommand> EnumerateTestCommands(IMethodInfo method)
         {
-            foreach (ITestCommand c in SenarioContext.EnumerateTestCommands(method, CreateInstance))
+            foreach (ITestCommand c in ScenarioContext.EnumerateTestCommands(method, CreateInstance))
             {
                 yield return c;
             }
@@ -34,8 +34,8 @@ namespace xGherkin
 
         private static void CreateInstance(IMethodInfo method)
         {
-            SenarioContext.BackgroundSteps.Clear();
-            SenarioContext.SenarioSteps.Clear();
+            ScenarioContext.BackgroundSteps.Clear();
+            ScenarioContext.ScenarioSteps.Clear();
 
             if (method.IsStatic)
                 method.Invoke(null, null);
@@ -51,7 +51,7 @@ namespace xGherkin
 
                 if (backGround != null)
                 {
-                    SenarioContext.IsBackground = true;
+                    ScenarioContext.IsBackground = true;
 
                     try
                     {
@@ -63,7 +63,7 @@ namespace xGherkin
                     }
                     finally
                     {
-                        SenarioContext.IsBackground = false;
+                        ScenarioContext.IsBackground = false;
                     }
                 }
 

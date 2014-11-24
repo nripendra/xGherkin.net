@@ -40,7 +40,7 @@ namespace xGherkin.Core.Steps
         {
             //https://github.com/cucumber/cucumber/wiki/Feature-Introduction
 
-            if ((SenarioContext.CurrentStep is GivenStep || (SenarioContext.CurrentStep == null)) &&
+            if ((ScenarioContext.CurrentStep is GivenStep || (ScenarioContext.CurrentStep == null)) &&
                 desc.StartsWith("Given", StringComparison.OrdinalIgnoreCase))
             {
                 return new GivenStep(desc, action);
@@ -55,15 +55,15 @@ namespace xGherkin.Core.Steps
             }
             else if (desc.StartsWith("And", StringComparison.OrdinalIgnoreCase) || desc.StartsWith("But", StringComparison.OrdinalIgnoreCase))
             {
-                if (SenarioContext.CurrentStep is GivenStep)
+                if (ScenarioContext.CurrentStep is GivenStep)
                 {
                     return new GivenStep(desc, action);
                 }
-                else if (SenarioContext.CurrentStep is WhenStep)
+                else if (ScenarioContext.CurrentStep is WhenStep)
                 {
                     return new WhenStep(desc, action);
                 }
-                else if (SenarioContext.CurrentStep is ThenStep)
+                else if (ScenarioContext.CurrentStep is ThenStep)
                 {
                     return new ThenStep(desc, action);
                 }

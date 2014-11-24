@@ -11,7 +11,7 @@ namespace xGherkin
 
             if (newStep != null)
             {
-                SenarioContext.AddStep(newStep);
+                ScenarioContext.AddStep(newStep);
             }
 
             return newStep;
@@ -22,7 +22,7 @@ namespace xGherkin
             var newStep = new GivenStep(desc, action);
             newStep.DataSamples = table;
 
-            SenarioContext.AddStep(newStep);
+            ScenarioContext.AddStep(newStep);
 
             return newStep;
         }

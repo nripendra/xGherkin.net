@@ -7,7 +7,7 @@ using Xunit.Sdk;
 
 namespace xGherkin.Core
 {
-    internal static class SenarioContext
+    internal static class ScenarioContext
     {
         [ThreadStatic]
         public static bool IsBackground;
@@ -16,7 +16,7 @@ namespace xGherkin.Core
         public static List<GherkinStep> BackgroundSteps = new List<GherkinStep>();
 
         [ThreadStatic]
-        public static List<GherkinStep> SenarioSteps = new List<GherkinStep>();
+        public static List<GherkinStep> ScenarioSteps = new List<GherkinStep>();
 
         [ThreadStatic]
         public static GherkinTable Example;
@@ -30,7 +30,7 @@ namespace xGherkin.Core
                     return BackgroundSteps.LastOrDefault();
                 }
                 else
-                    return SenarioSteps.LastOrDefault();
+                    return ScenarioSteps.LastOrDefault();
             }
         }
 
@@ -38,7 +38,7 @@ namespace xGherkin.Core
         {
             Guard.ArgumentNotNull("newStep", newStep);
             
-            List<GherkinStep> steps = IsBackground ? BackgroundSteps : SenarioSteps;
+            List<GherkinStep> steps = IsBackground ? BackgroundSteps : ScenarioSteps;
 
             var cur = steps.LastOrDefault();
 
@@ -77,13 +77,13 @@ namespace xGherkin.Core
                 yield break;
             }
 
-            if (method.HasAttribute(typeof(SenarioOutlineAttribute)))
+            if (method.HasAttribute(typeof(ScenarioOutlineAttribute)))
             {
-                if (SenarioContext.Example == null)
+                if (ScenarioContext.Example == null)
                 {
                     try
                     {
-                        throw new Exception("Examples are necessary for senario outline. Try using Senario attribute instead?");
+                        throw new Exception("Examples are necessary for Scenario outline. Try using Scenario attribute instead?");
                     }
                     catch(Exception ex)
                     {
@@ -152,7 +152,7 @@ namespace xGherkin.Core
             displayName = MethodUtility.GetDisplayName(method);
 
 
-            if (SenarioSteps.Count > 0)
+            if (ScenarioSteps.Count > 0)
             {
                 tags = method.GetCustomAttributes(typeof(TagAttribute));
 
@@ -165,10 +165,10 @@ namespace xGherkin.Core
 
                 message.AppendLine();
 
-                message.AppendLine(string.Format("Senario: {0}", displayName)).AppendLine();
+                message.AppendLine(string.Format("Scenario: {0}", displayName)).AppendLine();
             }
 
-            foreach (var step in SenarioSteps)
+            foreach (var step in ScenarioSteps)
             {
                 string description = step.Description;
 

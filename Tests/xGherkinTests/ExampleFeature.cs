@@ -26,8 +26,8 @@ namespace xGherkinTests
         }
 
         [PBI("32160"), Bug("42150"), Sprint("1"),
-        Senario("Successfull password change")]
-        public void Senario1()
+        Scenario("Successfull password change")]
+        public void Scenario1()
         {
             string oldpassword = "";
             string newpassword = "";
@@ -71,8 +71,8 @@ namespace xGherkinTests
         }
 
         [PBI("32160"), Bug("42150"), Sprint("1"),
-        Senario("Unsuccessfull password change, due to wrong old password")]
-        public void Senario2()
+        Scenario("Unsuccessfull password change, due to wrong old password")]
+        public void Scenario2()
         {
             string oldpassword = "";
             string newpassword = "";

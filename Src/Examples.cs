@@ -6,7 +6,7 @@ namespace xGherkin
     {
         public static void SetTo(GherkinTable gherkinTable)
         {
-            SenarioContext.Example = gherkinTable;
+            ScenarioContext.Example = gherkinTable;
         }
     }
 }

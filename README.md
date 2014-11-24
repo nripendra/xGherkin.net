@@ -24,7 +24,7 @@ Let's look at an typical example of a feature explained in Gherkin syntax.
             |sam@123  |pass2   |
 
     @PBI-32160 @Bug-42150 @Sprint-1
-    Senario: Successfull password change
+    Scenario: Successfull password change
         Given that I have logged in with 'bob@123'
             And I have set oldpassword to 'pass1' and new password to 'pass2'
         When I call reset password
@@ -34,7 +34,7 @@ Let's look at an typical example of a feature explained in Gherkin syntax.
                 should return a user with username 'bob@123'
 
     @PBI-32160 @Bug-42150 @Sprint-1
-    Senario: Unsuccessfull password change, due to wrong old password
+    Scenario: Unsuccessfull password change, due to wrong old password
         Given that I have logged in with 'bob@123'
             And I have set oldpassword to 'abc' and new password to 'pass2'
         When I call reset password
@@ -75,8 +75,8 @@ namespace xGherkinTests
         }
 
         [PBI("32160"), Bug("42150"), Sprint("1"),
-        Senario("Successfull password change")]
-        public void Senario1()
+        Scenario("Successfull password change")]
+        public void Scenario1()
         {
             string oldpassword = "";
             string newpassword = "";
@@ -120,8 +120,8 @@ namespace xGherkinTests
         }
 
         [PBI("32160"), Bug("42150"), Sprint("1"),
-        Senario("Unsuccessfull password change, due to wrong old password")]
-        public void Senario2()
+        Scenario("Unsuccessfull password change, due to wrong old password")]
+        public void Scenario2()
         {
             string oldpassword = "";
             string newpassword = "";
@@ -199,8 +199,8 @@ Notice how similar xGherkin.net syntax is to plain Gherkin. Just remove the c# n
 There is support for much of Gherkin syntax such as:
 
 * Feature with description
-* Senario with Given-When-Then steps
-* Senario outline, that can parameterize the Senario steps
+* Scenario with Given-When-Then steps
+* Scenario outline, that can parameterize the Scenario steps
 * Example table
 * Fixture table in given step is also supported.
 * Background
