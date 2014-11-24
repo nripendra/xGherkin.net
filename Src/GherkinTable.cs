@@ -91,11 +91,12 @@ namespace xGherkin
 
         public virtual string ToConsoleString()
         {
-            int[] colLength = new int[Table.Columns.Count];
+            //http://stackoverflow.com/questions/3350842/how-to-format-a-list-of-some-classes-into-a-nice-ascii-table-in-c
+
+            int[] colLength = Table.Columns.Cast<System.Data.DataColumn>().Select(x => x.ColumnName.Length).ToArray();
 
             foreach (System.Data.DataRow row in Table.Rows)
             {
-
                 for (int i = 0; i < Table.Columns.Count; i++)
                 {
                     int len = row[i].ToString().Length;
@@ -104,34 +105,28 @@ namespace xGherkin
                         colLength[i] = len;
                     }
                 }
-
             }
 
-            StringBuilder str = new StringBuilder("|");
+            StringBuilder str = new StringBuilder("");
 
-            for (int i = 0; i < Table.Columns.Count; i++)
+            // create formatting strings, add all sizes:
+            string line = new String('-', (colLength.Select(x => x + 4).Sum()));
+
+            string formatString = "|";
+            for (int i = 0; i < colLength.Length; i++)
             {
-                int len = Table.Columns[i].ColumnName.Length;
-                if (colLength[i] < len)
-                {
-                    colLength[i] = len;
-                }
-
-                str.Append(Truncate(Table.Columns[i].ColumnName, colLength[i])).Append("|");
+                formatString += "{{" + i + ", -{" + i + "}}}|";
             }
 
-            str.AppendLine();
+            formatString = String.Format(formatString, colLength.Cast<object>().ToArray());
+
+            str.AppendLine(String.Format(formatString, Table.Columns.Cast<System.Data.DataColumn>().Select(x => x.ColumnName).ToArray()));
+
+            str.AppendLine(line);
 
             foreach (System.Data.DataRow row in Table.Rows)
             {
-                str.Append("|");
-
-                for (int i = 0; i < Table.Columns.Count; i++)
-                {
-                    str.Append(Truncate(row[i].ToString(), colLength[i])).Append("|");
-                }
-
-                str.AppendLine();
+                str.AppendLine(String.Format(formatString, row.ItemArray));
             }
 
             return str.ToString();
