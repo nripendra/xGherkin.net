@@ -34,8 +34,8 @@ namespace xGherkin
 
         private static void CreateInstance(IMethodInfo method)
         {
-            ScenarioContext.BackgroundSteps.Clear();
-            ScenarioContext.ScenarioSteps.Clear();
+            ScenarioContext.BackgroundSteps = new List<Core.Steps.GherkinStep>();
+            ScenarioContext.ScenarioSteps = new List<Core.Steps.GherkinStep>();
 
             if (method.IsStatic)
                 method.Invoke(null, null);
