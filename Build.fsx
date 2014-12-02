@@ -1,5 +1,5 @@
 ﻿// include Fake lib
-#r @"./Packages/FAKE.3.9.9/tools/FakeLib.dll"
+#r @"./Tools/FAKE.Core/tools/FakeLib.dll"
 
 open Fake
 open Fake.AssemblyInfoFile
@@ -79,7 +79,9 @@ Target "BuildTest" (fun _ ->
 Target "Test" (fun _ ->
  
     !! (testDir + @"\xGherkinTests.dll") 
-      |> xUnit (fun p -> {p with OutputDir = testDir })
+      |> xUnit (fun p -> {p with 
+                             OutputDir = testDir
+                             HtmlOutput = true })
 )
 
 Target "CreatePackage" (fun _ ->

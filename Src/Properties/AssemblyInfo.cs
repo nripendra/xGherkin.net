@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyrightAttribute("Copyright ©  2014 - Nripendra Nath Newa")]
 [assembly: ComVisibleAttribute(false)]
 [assembly: AssemblyVersionAttribute("1.0.4")]
-[assembly: AssemblyInformationalVersionAttribute("1.0.4-rc")]
+[assembly: AssemblyInformationalVersionAttribute("1.0.4")]
 [assembly: AssemblyFileVersionAttribute("1.0.4")]
 namespace System {
     internal static class AssemblyVersionInformation {

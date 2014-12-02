@@ -27,8 +27,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "git", "git", "{2BA33C44-D8A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BCBA2A5A-1783-433E-8CE7-8F40CF74D0AE}"
 	ProjectSection(SolutionItems) = preProject
+		build.cmd = build.cmd
 		Build.fsx = Build.fsx
 		ReleaseNotes.md = ReleaseNotes.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{05BE70C7-4FD9-4CCC-96C1-7580356C2401}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nuget", "nuget", "{706CCEC1-9B09-4162-B1C2-4284B063B7CF}"
+	ProjectSection(SolutionItems) = preProject
+		Tools\nuget\NuGet.exe = Tools\nuget\NuGet.exe
 	EndProjectSection
 EndProject
 Global
@@ -52,5 +60,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{5E5B8306-E0FE-42B3-A409-61D6C744E942} = {0D724DED-6157-4007-9EC4-551E7B966870}
 		{3E43BDF7-2580-4F36-909A-19EE1A27EAC7} = {34015BA8-E843-4C4C-B03E-1E5197946FD8}
+		{706CCEC1-9B09-4162-B1C2-4284B063B7CF} = {05BE70C7-4FD9-4CCC-96C1-7580356C2401}
 	EndGlobalSection
 EndGlobal

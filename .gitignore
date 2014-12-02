@@ -191,3 +191,4 @@ ModelManifest.xml
 lib/*
 .nuget/NuGet.exe
 /packaging/*
+/Tools/FAKE.Core/*
