@@ -8,39 +8,39 @@ It is implemented as an extension to xunit.net
 Let's look at an typical example of a feature explained in Gherkin syntax.
 
 ```gherkin
-    @Issue-345
-    Feature: Password management
+@Issue-345
+Feature: Password management
 
-        An authenticated user must be able to change password, by providing new and old password. 
-        If user isn't authenticated yet, then providing email (that user had registered with), 
-        s/he shoudld be able to reset password. Resetting password will cause an email to be sent to 
-        the user with a new system generated password.
+    An authenticated user must be able to change password, by providing new and old password. 
+    If user isn't authenticated yet, then providing email (that user had registered with), 
+    s/he shoudld be able to reset password. Resetting password will cause an email to be sent to 
+    the user with a new system generated password.
 
-    Background:
-        Given that following users exist
-            |username |password|
-            -------------------
-            |bob@123  |pass1   |
-            |sam@123  |pass2   |
+Background:
+    Given that following users exist
+        |username |password|
+        -------------------
+        |bob@123  |pass1   |
+        |sam@123  |pass2   |
 
-    @PBI-32160 @Bug-42150 @Sprint-1
-    Scenario: Successfull password change
-        Given that I have logged in with 'bob@123'
-            And I have set oldpassword to 'pass1' and new password to 'pass2'
-        When I call reset password
-        Then it should be successful
-            And calling GetByCredentials with username: 'bob@123' and with password: 'pass1' should return null
-            And calling GetByCredentials with username: 'bob@123' and password: 'pass2' 
-                should return a user with username 'bob@123'
+@PBI-32160 @Bug-42150 @Sprint-1
+Scenario: Successfull password change
+    Given that I have logged in with 'bob@123'
+        And I have set oldpassword to 'pass1' and new password to 'pass2'
+    When I call reset password
+    Then it should be successful
+        And calling GetByCredentials with username: 'bob@123' and with password: 'pass1' should return null
+        And calling GetByCredentials with username: 'bob@123' and password: 'pass2' 
+            should return a user with username 'bob@123'
 
-    @PBI-32160 @Bug-42150 @Sprint-1
-    Scenario: Unsuccessfull password change, due to wrong old password
-        Given that I have logged in with 'bob@123'
-            And I have set oldpassword to 'abc' and new password to 'pass2'
-        When I call reset password
-        Then it should not succeed
-            And calling GetByCredentials with username: 'bob@123' and password: 'abc' should return null
-            And calling GetByCredentials with username: 'bob@123' and password: 'pass1' should user
+@PBI-32160 @Bug-42150 @Sprint-1
+Scenario: Unsuccessfull password change, due to wrong old password
+    Given that I have logged in with 'bob@123'
+        And I have set oldpassword to 'abc' and new password to 'pass2'
+    When I call reset password
+    Then it should not succeed
+        And calling GetByCredentials with username: 'bob@123' and password: 'abc' should return null
+        And calling GetByCredentials with username: 'bob@123' and password: 'pass1' should user
 ```
 
 Now lets look at xGherkin.net syntax
