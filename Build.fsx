@@ -61,6 +61,24 @@ Target "AssemblyInfo" (fun _ ->
          Attribute.InformationalVersion (releaseNotes.SemVer.ToString())
          Attribute.FileVersion releaseNotes.AssemblyVersion]
 )
+
+Target "RestorePackages" (fun _ -> 
+     "./Src/packages.config"
+     |> RestorePackage (fun p ->
+         { p with
+             Retries = 2 })
+
+     "./.nuget/packages.config"
+     |> RestorePackage (fun p ->
+         { p with
+             Retries = 2 })
+
+     "./Tests/xGherkinTests/packages.config"
+     |> RestorePackage (fun p ->
+         { p with
+             Retries = 2 })
+)
+
 //Build Main project
 Target "Build" (fun _ ->
  
@@ -121,6 +139,7 @@ Target "Default" (fun _ ->
 
 "Clean"
   ==> "AssemblyInfo" 
+  ==> "RestorePackages"
   ==> "Build"
   ==> "BuildTest"
   ==> "Test"
