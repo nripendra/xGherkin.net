@@ -218,4 +218,4 @@ Also there is an 'Issue' tag to represent Github issue.
 License
 ============
 
-This library has been released under the term of very open MIT license, so feel free to extend or modify it any way you like.
+This library has been released under the term of very open [MIT license](https://github.com/nripendra/xGherkin.net/blob/master/LICENSE), so feel free to extend or modify it any way you like.
