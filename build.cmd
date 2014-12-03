@@ -8,4 +8,4 @@ REM copy updated nuget to .nuget folder
 copy "tools\nuget\nuget.exe" ".nuget\nuget.exe" /y
 
 REM Build
-"tools\FAKE.Core\tools\Fake.exe" "build.fsx"
+"tools\FAKE.Core\tools\Fake.exe" "build.fsx" %1

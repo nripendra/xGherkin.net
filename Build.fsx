@@ -96,7 +96,7 @@ Target "BuildTest" (fun _ ->
 
 Target "Test" (fun _ ->
  
-    !! (testDir + @"\xGherkinTests.dll") 
+    !! (testDir @@ @"xGherkinTests.dll") 
       |> xUnit (fun p -> {p with 
                              OutputDir = testDir
                              HtmlOutput = true })
@@ -131,10 +131,14 @@ Target "CreatePackage" (fun _ ->
             "xGherkin.net.nuspec"
 )
 
-
 // Default target
 Target "Default" (fun _ ->
     trace "Completed Build!!"
+)
+
+Target "TestReport" (fun _ ->
+    
+    ignore(System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(testDir @@ @"xGherkinTests.dll.html")))
 )
 
 "Clean"
@@ -145,6 +149,7 @@ Target "Default" (fun _ ->
   ==> "Test"
   ==> "CreatePackage"
   ==> "Default"
+  ==> "TestReport"
 
 // start build
 RunTargetOrDefault "Default"
