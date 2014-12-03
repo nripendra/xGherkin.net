@@ -235,3 +235,28 @@ Each of these libraries have their own licenses, so be careful that xGherkin.net
 *Disclaimer:*
 
 There has no violations of any license in the process of building this software that I'm aware of. Please notify me about such license violation if found, I will investigate and rectify the issue promptly.
+
+Building from source
+====================
+If you prefer to compile xGherkin.net from it's source yourself, you’ll need:
+
+- Visual Studio 2013 (I haven't tested in other versions)
+- Windows 8 or higher (I haven't tested in other versions)
+- Git or [Github for windows](https://windows.github.com/)
+
+To get the source code you can clone it locally, by clicking the "Clone in Desktop" button.
+
+If you are more of a command line hacker, here are the sequence of commands you'd be interested in:
+
+```
+git clone https://github.com/nripendra/xGherkin.net.git xGherkin.net
+cd xGherkin.net
+.\build.cmd
+```
+
+The build.cmd is setup to update nuget (if available), install Fake.Core package (if necessary) and then run build.fsx
+
+Once the repository is cloned, open the solution file in visual studio.
+
+Open package manager console (TOOLS > Nuget Package Manager > Package Manager Console).
+And type ".\build.cmd" inside the Package Manager Console.
