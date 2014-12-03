@@ -219,3 +219,19 @@ License
 ============
 
 This library has been released under the term of very open [MIT license](https://github.com/nripendra/xGherkin.net/blob/master/LICENSE), so feel free to extend or modify it any way you like.
+xGherkin.net is built upon [xunit.net](https://github.com/xunit/xunit) testing framework, which is released under [Apache V2](https://github.com/xunit/xunit/blob/master/license.txt), which itself is quite open and flexible
+license too.
+
+Test project, and sample codes uses following libraries:
+
+| Library                                                   | License                                                                    |
+|-----------------------------------------------------------|----------------------------------------------------------------------------|
+| [xunit.should](https://github.com/cprieto/xunit.should)   | Unsure                                                                     |
+| [AutoFixture](https://github.com/AutoFixture/AutoFixture) | [MIT](https://github.com/AutoFixture/AutoFixture/blob/master/LICENCE.txt)  |
+| [Moq](https://github.com/Moq/moq4)                        | [BSD](https://github.com/Moq/moq4/blob/master/License.txt)                 |
+
+Each of these libraries have their own licenses, so be careful that xGherkin.net's MIT license doesn't cover third party libraries.
+
+*Disclaimer:*
+
+There has no violations of any license in the process of building this software that I'm aware of. Please notify me about such license violation if found, I will investigate and rectify the issue promptly.
